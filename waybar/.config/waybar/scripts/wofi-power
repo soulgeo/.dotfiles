@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+OPTIONS=$'󰐥 Shutdown\n󰤄 Suspend\n󰜉 Reboot\n Lock\n󰗽 Logout\n Cancel'
+
+# Show menu (do NOT use -j/json output)
+choice=$(printf "%s\n" "$OPTIONS" | wofi --show dmenu --normal-window -W 250 -H 180 -p "Power" --no-fuzzy --no-sort --allow-markup) || exit 0
+
+# Remove leading icons/non-alphanumeric characters and trim whitespace.
+# This makes matching robust even if icons are multi-byte or differently normalized.
+label=$(printf "%s" "$choice" | sed -E 's/^[^[:alnum:]]+//; s/^[[:space:]]+//; s/[[:space:]]+$//')
+
+case "$label" in
+  Shutdown)
+    exec systemctl poweroff
+    ;;
+  Reboot)
+    exec systemctl reboot
+    ;;
+  Suspend)
+    exec systemctl suspend
+    ;;
+  Lock)
+    if command -v swaylock >/dev/null 2>&1; then
+      swaylock
+    elif command -v i3lock >/dev/null 2>&1; then
+      i3lock
+    elif command -v loginctl >/dev/null 2>&1; then
+      loginctl lock-session
+    else
+      notify-send "Lock" "No lock command found"
+    fi
+    ;;
+  Logout)
+    if command -v swaymsg >/dev/null 2>&1; then
+      swaymsg exit
+    elif command -v hyprctl >/dev/null 2>&1; then
+      hyprctl dispatch exit
+    else
+      if [ -n "${XDG_SESSION_ID:-}" ]; then
+        loginctl terminate-session "$XDG_SESSION_ID"
+      fi
+    fi
+    ;;
+  *)
+    # Cancel or nothing selected
+    exit 0
+    ;;
+esac
