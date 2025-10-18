@@ -5,6 +5,8 @@
 ---@type ChadrcConfig
 local M = {}
 
+M.mappings = require("custom.mappings")
+
 M.base46 = {
     theme = "ashen",
     transparency = true,

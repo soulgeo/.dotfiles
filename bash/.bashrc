@@ -90,3 +90,4 @@ export FZF_DEFAULT_OPTS="
 	--color=query:#d5d5d5
 	--color=gutter:#121212"
 
+bind -r '\C-l'
