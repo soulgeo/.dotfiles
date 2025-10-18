@@ -7,7 +7,8 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-# PS1='[\u@\h \W]\$ '
+
+export EDITOR="nvim"
 
 if ps -o comm= -p $(ps -o ppid= -p $$) | grep -qi alacritty; then
     if [ -z "${NO_FASTFETCH:-}" ]; then
@@ -17,6 +18,7 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/home/TWEL/go/bin"
+export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 # Waydroid helpers
 # wd-start() {
@@ -48,11 +50,14 @@ parse_git_branch() {
   # return nothing quickly if not a git repo
   git -C "$PWD" rev-parse --is-inside-work-tree >/dev/null 2>&1 || return
   # get short branch name, avoid locks where possible
-  branch=$(git -C "$PWD" -c core.bare=false --no-optional-locks rev-parse --abbrev-ref --symbolic-full-name HEAD 2>/dev/null) || return
-  printf '(%s)' "$branch"
+  branch=$(git -C "$PWD" -c core.bare=false --no-optional-locks \
+    rev-parse --abbrev-ref --symbolic-full-name HEAD 2>/dev/null) || return
+  # print a leading space plus branch in parentheses (so PS1 doesn't need its own space)
+  printf ' (%s)' "$branch"
 }
 
-export PS1="\u@\h \[\e[91m\]\w \[\e[94m\]\$(parse_git_branch)\[\e[00m\]> "
+# PS1: note there is NO space immediately before $(parse_git_branch)
+export PS1="\u@\h \[\e[91m\]\w\[\e[94m\]\$(parse_git_branch)\[\e[00m\] > "
 
 
 # Yazi auto-cd function
