@@ -8,5 +8,7 @@ local map = vim.keymap.set
 map("i", "jk", "<ESC>")
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
