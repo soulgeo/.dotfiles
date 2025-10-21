@@ -11,7 +11,7 @@ M.base_30 = {
     one_bg2 = "#535353",
     one_bg3 = "#949494",
     grey = "#535353",
-    grey_fg = "#949494",
+    grey_fg = "#535353",
     grey_fg2 = "#a7a7a7",
     light_grey = "#b4b4b4",
     red = "#B14242",
@@ -46,12 +46,12 @@ M.base_16 = {
     base05 = "#d5d5d5",
     base06 = "#C4693D",
     base07 = "#b4b4b4",
-    base08 = "#a7a7a7", -- red_ember
+    base08 = "#E49A44", -- red_ember
     base09 = "#376969", -- blue
-    base0A = "#4A8B8B", -- orange_blaze
+    base0A = "#D87C4A", -- orange_blaze
     base0B = "#DF6464", -- red_glowing
     base0C = "#4A8B8B", -- orange_smolder
-    base0D = "#D87C4A", -- orange_glow
+    base0D = "#E49A44", -- orange_glow
     base0E = "#B14242", -- red_ember (same as base08)
     base0F = "#949494", -- brown
 }
@@ -61,13 +61,30 @@ M.base_16 = {
 M.polish_hl = {
     -- default highlights
     defaults = {
-        Comment = { fg = M.base_30.grey_fg, italic = true },
+        Comment = { fg = M.base_30.grey, italic = true },
     },
 
     -- treesitter / highlight groups
     treesitter = {
         ["@variable"] = { fg = M.base_30.white },
         ["@function"] = { fg = M.base_30.orange, bold = true },
+        ["@comment"] = { fg = M.base_30.grey, italic = true },
+        ["@variable"] = { fg = M.base_30.white },
+        ["@parameter"] = { fg = M.base_30.one_bg3 },
+        ["@function"] = { fg = M.base_30.orange, bold = true },
+        ["@method"] = { fg = M.base_30.blue },
+        ["@type"] = { fg = M.base_30.blue },
+        ["@type.builtin"] = { fg = M.base_30.red },
+        ["@keyword"] = { fg = M.base_30.red, italic = true },
+        ["@string"] = { fg = M.base_30.green },
+        ["@constant"] = { fg = M.base_30.red },
+        ["@number"] = { fg = M.base_30.blue },
+        ["@property"] = { fg = M.base_30.white },
+        ["@constructor"] = { fg = M.base_30.white, bold = true },
+        ["@attribute"] = { fg = M.base_30.cyan },
+        ["@boolean"] = { fg = M.base_30.vibrant_green },
+        ["@operator"] = { fg = M.base_30.teal },
+        ["@todo"] = { fg = M.base_30.sun, bold = true },
     },
 }
 

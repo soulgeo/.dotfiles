@@ -22,3 +22,5 @@ local options = {
 }
 
 require("nvim-treesitter.configs").setup(options)
+
+vim.filetype.add({ extension = { axaml = "xml" } })

@@ -9,6 +9,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 export EDITOR="nvim"
+export ELECTRON_OZONE_PLATFORM_HINT="auto"
 
 if ps -o comm= -p $(ps -o ppid= -p $$) | grep -qi alacritty; then
     if [ -z "${NO_FASTFETCH:-}" ]; then
