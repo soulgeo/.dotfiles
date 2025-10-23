@@ -8,7 +8,7 @@ local M = {}
 M.mappings = require("custom.mappings")
 
 M.base46 = {
-    theme = "catppuccin",
+    theme = "ashen",
     transparency = true,
 
     -- hl_override = {
