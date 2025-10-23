@@ -1,54 +1,31 @@
-vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46/"
-vim.g.mapleader = " "
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=4")
+vim.cmd("set softtabstop=4")
+vim.cmd("set shiftwidth=4")
 
-vim.opt.relativenumber = true
+require("config.lazy")
+require("lazy").setup("plugins")
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- Make the main editor background transparent
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- Make floating windows (e.g., popups, LSP info) transparent
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- Make the border of floating windows transparent
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+-- Make the popup menu transparent
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
 
-if not vim.uv.fs_stat(lazypath) then
-    local repo = "https://github.com/folke/lazy.nvim.git"
-    vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
-end
+local builtin = require("telescope.builtin")
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
-vim.opt.rtp:prepend(lazypath)
+vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 
-local lazy_config = require("configs.lazy")
-
--- load plugins
-require("lazy").setup({
-    {
-        "NvChad/NvChad",
-        lazy = false,
-        branch = "v2.5",
-        import = "nvchad.plugins",
-    },
-
-    { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
--- add this to your Neovim config
-local hooks = require("ibl.hooks")
-
-hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-    -- create minimal highlight groups that ibl expects
-    vim.api.nvim_set_hl(0, "IblIndent", { fg = "#3b4261" })
-    vim.api.nvim_set_hl(0, "IblWhitespace", { fg = "#2c313c" })
-    vim.api.nvim_set_hl(0, "IblScope", { fg = "#3b4261", underline = true })
-end)
-
-require("ibl").setup({
-    -- your ibl opts here
-    indent = { char = "│", tab_char = "│" },
+local config = require("nvim-treesitter.configs")
+config.setup({
+    ensure_installed = {"lua", "javascript"},
+    highlight = {enable = true},
+    indent = {enable = true},
 })
 
-require("options")
-require("autocmds")
 
-vim.schedule(function()
-    require("mappings")
-end)
