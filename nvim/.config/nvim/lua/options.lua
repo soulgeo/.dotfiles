@@ -2,9 +2,9 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.opt.termguicolors = true
-vim.opt.fillchars = {eob = " "}
-    
-vim.cmd.colorscheme "ashen"
+vim.opt.fillchars = { eob = " " }
+
+vim.cmd.colorscheme("ashen")
 
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
@@ -17,3 +17,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "number"
 
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+})
