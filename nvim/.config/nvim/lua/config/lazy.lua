@@ -34,5 +34,3 @@ require("lazy").setup({
   checker = { enabled = true },
 }) 
 
-require("ashen").setup()
-vim.cmd.colorscheme "ashen"

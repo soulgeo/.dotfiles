@@ -6,6 +6,7 @@ return {
   priority = 1000,
   -- configuration is optional!
   opts = {
+    transparent = true,
     -- your settings here
   },
 }
