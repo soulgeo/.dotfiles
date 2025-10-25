@@ -34,10 +34,36 @@ return {
             },
             sections = {
                 lualine_a = { "mode" },
-                lualine_b = { "branch", "diff" },
+                lualine_b = { "branch" },
                 lualine_c = { "filename" },
-                lualine_x = { "progress" },
-                lualine_y = { "diagnostics", "encoding", "fileformat", "filetype" },
+                lualine_x = {
+                    {
+                        function()
+                            local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+                            if #buf_clients == 0 then
+                                return "No LSP"
+                            end
+
+                            local buf_ft = vim.bo.filetype
+                            local names = {}
+
+                            for _, client in ipairs(buf_clients) do
+                                local filetypes = client.config.filetypes
+                                if not filetypes or vim.tbl_contains(filetypes, buf_ft) then
+                                    table.insert(names, client.name)
+                                end
+                            end
+
+                            if #names == 0 then
+                                return "No LSP"
+                            else
+                                return "  " .. table.concat(names, ", ")
+                            end
+                        end,
+                        color = { gui = "bold" },
+                    },
+                },
+                lualine_y = { "diagnostics", "encoding", "filetype" },
                 lualine_z = { "location" },
             },
         })
