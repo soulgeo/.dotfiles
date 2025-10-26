@@ -1,3 +1,7 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+vim.lsp.config("*", { capabilities = capabilities })
+
 local default_servers = {
     "pyright",
     "ts_ls",
@@ -11,7 +15,7 @@ vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
             diagnostics = {
-                enable = false, -- Disable all diagnostics from lua_ls
+                enable = true,
                 -- globals = { "vim" },
             },
             workspace = {

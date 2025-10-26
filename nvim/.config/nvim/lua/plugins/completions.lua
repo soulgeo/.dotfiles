@@ -1,5 +1,15 @@
 return {
     {
+        "hrsh7th/cmp-nvim-lsp",
+        config = function()
+            require("cmp").setup({
+                sources = {
+                    { name = "nvim_lsp" },
+                },
+            })
+        end,
+    },
+    {
         "L3MON4D3/LuaSnip",
         dependencies = {
             "saadparwaiz1/cmp_luasnip",
