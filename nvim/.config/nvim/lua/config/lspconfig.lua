@@ -38,7 +38,7 @@ vim.lsp.config("gopls", {
     on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false
-        on_attach(client, bufnr)
+        -- on_attach(client, bufnr)
     end,
     cmd = { "gopls" },
     filetypes = { "go", "gomod", "gotmpl", "gowork" },
