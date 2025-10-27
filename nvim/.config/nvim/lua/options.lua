@@ -1,11 +1,29 @@
-require "nvchad.options"
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
--- add yours here!
+vim.opt.termguicolors = true
+vim.opt.fillchars = { eob = " " }
 
-local o = vim.o
+vim.cmd.colorscheme("ashen")
 
--- Indenting
-o.shiftwidth = 4
-o.tabstop = 4
-o.softtabstop = 4
--- o.cursorlineopt ='both' -- to enable cursorline!
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=4")
+vim.cmd("set softtabstop=4")
+vim.cmd("set shiftwidth=4")
+
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#323232", bg = "NONE" })
+vim.api.nvim_set_hl(0, "ErrorMsg", { fg = "#C53030", bg = "NONE" })
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.signcolumn = "number"
+
+vim.opt.showmode = false
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+})

@@ -1,11 +1,4 @@
-local servers = {
-    "lua_ls",
-    "pyright",
-    "ts_ls",
-    "eslint",
-    "gopls",
-    "omnisharp",
-}
+local servers = require("config.lspservers")
 
 -- List of servers to ignore during install
 local ignore_install = {}
