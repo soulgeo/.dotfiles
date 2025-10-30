@@ -10,9 +10,9 @@ return {
         lazy = false, -- neo-tree will lazily load itself
         config = function()
             require("neo-tree").setup({
-                window = {
-                    position = "float",
-                },
+                -- window = {
+                --     position = "float",
+                -- },
                 -- options go here
             })
         end,
