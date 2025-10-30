@@ -1,4 +1,20 @@
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
+-- vim.keymap.set("n", "<C-n>", ":Neotree toggle<CR>", { silent = true })
+vim.keymap.set("n", "<C-n>", function()
+    require("neo-tree.command").execute({
+        toggle = true,
+        position = "left", -- request left
+        source = "filesystem", -- optional: choose source (filesystem, buffers, git_status)
+        -- you can also add 'dir = vim.loop.cwd()' to open at cwd, or 'reveal = true'
+    })
+end, { desc = "Toggle Neo-tree" })
+vim.keymap.set("n", "<leader>ex", function()
+    require("neo-tree.command").execute({
+        toggle = true,
+        position = "float", -- request float
+        source = "filesystem", -- optional: choose source (filesystem, buffers, git_status)
+        -- you can also add 'dir = vim.loop.cwd()' to open at cwd, or 'reveal = true'
+    })
+end, { desc = "Toggle Neo-tree (float)" })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
@@ -16,3 +32,6 @@ vim.keymap.set({ "n", "v" }, "N", "Nzzzv", { noremap = true, silent = true })
 
 -- Kill last search highlight
 vim.keymap.set("n", "<Esc>", "<Esc>:noh<CR>", { noremap = true, silent = true })
+
+-- Twilight
+vim.keymap.set("n", "<leader>tw", ":Twilight<CR>", { noremap = true, silent = true })
