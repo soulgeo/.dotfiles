@@ -35,3 +35,6 @@ vim.keymap.set("n", "<Esc>", "<Esc>:noh<CR>", { noremap = true, silent = true })
 
 -- Twilight
 vim.keymap.set("n", "<leader>tw", ":Twilight<CR>", { noremap = true, silent = true })
+
+-- Diagnostics
+vim.keymap.set("n", "<leader>dg", vim.diagnostic.open_float, {})

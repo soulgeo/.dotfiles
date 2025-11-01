@@ -58,7 +58,8 @@ parse_git_branch() {
 }
 
 # PS1: note there is NO space immediately before $(parse_git_branch)
-export PS1="\u@\h \[\e[91m\]\w\[\e[94m\]\$(parse_git_branch)\[\e[00m\] > "
+export PS1="\[\e[91m\]\w\[\e[94m\]\$(parse_git_branch)\[\e[00m\] > "
+# export PS1="\u@\h \[\e[91m\]\w\[\e[94m\]\$(parse_git_branch)\[\e[00m\] > "
 
 
 # Yazi auto-cd function
