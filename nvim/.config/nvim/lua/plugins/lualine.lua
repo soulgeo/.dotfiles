@@ -25,6 +25,35 @@ return {
         custom.replace.c.bg = "none"
         custom.inactive.c.bg = "none"
 
+        -- -- fallback progress table + handler setup (only if get_progress not available)
+        -- if vim.lsp.get_progress == nil then
+        --     -- table keyed by client_id -> active progress count
+        --     _G._lualine_lsp_progress = _G._lualine_lsp_progress or {}
+        --     if not _G._lualine_lsp_progress_handler_set then
+        --         local orig_handler = vim.lsp.handlers["$/progress"]
+        --         vim.lsp.handlers["$/progress"] = function(err, result, ctx, config)
+        --             if orig_handler then
+        --                 pcall(orig_handler, err, result, ctx, config)
+        --             end
+        --             if err or not result or not ctx then
+        --                 return
+        --             end
+        --             local client_id = ctx.client_id
+        --             if not client_id then
+        --                 return
+        --             end
+        --             local kind = result.value and result.value.kind
+        --             if kind == "begin" then
+        --                 _G._lualine_lsp_progress[client_id] = (_G._lualine_lsp_progress[client_id] or 0) + 1
+        --             elseif kind == "end" then
+        --                 _G._lualine_lsp_progress[client_id] =
+        --                     math.max(0, (_G._lualine_lsp_progress[client_id] or 1) - 1)
+        --             end
+        --         end
+        --         _G._lualine_lsp_progress_handler_set = true
+        --     end
+        -- end
+
         require("lualine").setup({
             options = {
                 theme = custom,
@@ -39,26 +68,8 @@ return {
                 lualine_x = {
                     {
                         function()
-                            local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
-                            if #buf_clients == 0 then
-                                return "No LSP"
-                            end
-
-                            local buf_ft = vim.bo.filetype
-                            local names = {}
-
-                            for _, client in ipairs(buf_clients) do
-                                local filetypes = client.config.filetypes
-                                if not filetypes or vim.tbl_contains(filetypes, buf_ft) then
-                                    table.insert(names, client.name)
-                                end
-                            end
-
-                            if #names == 0 then
-                                return "No LSP"
-                            else
-                                return "  " .. table.concat(names, ", ")
-                            end
+                            -- wrap call so plugin can be lazy-loaded safely
+                            return require("lsp-progress").progress()
                         end,
                         color = { gui = "bold" },
                     },
@@ -67,7 +78,13 @@ return {
                 lualine_z = { "location" },
             },
         })
-
+        -- and make sure lualine refreshes when progress updates:
+        vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+        vim.api.nvim_create_autocmd("User", {
+            group = "lualine_augroup",
+            pattern = "LspProgressStatusUpdated",
+            callback = require("lualine").refresh,
+        })
         -- Clear StatusLine/StatusLineNC backgrounds (use hi! to cover both GUI/cterm)
         local function clear_statusline_bg()
             vim.cmd([[
