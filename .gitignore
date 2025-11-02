@@ -1,0 +1,17 @@
+# ignore everything under .tmuxifier
+.tmuxifier/*
+
+# keep the .tmuxifier directory itself
+!.tmuxifier/
+
+# keep the layouts directory but only session layout files (*.session.sh)
+!.tmuxifier/layouts/
+!.tmuxifier/layouts/*.session.sh
+
+# (optional) keep templates if you want to version them
+!.tmuxifier/templates/
+!.tmuxifier/templates/**
+
+# ignore typical local/bak files
+.tmuxifier/*.local
+.tmuxifier/*.bak
