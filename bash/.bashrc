@@ -5,8 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='ls -lh --color=auto'
 alias grep='grep --color=auto'
+
 alias tmnew='tmuxifier new-session'
 alias tmedit='tmuxifier edit-session'
 alias tmload='tmuxifier load-session'
