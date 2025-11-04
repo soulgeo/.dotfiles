@@ -22,7 +22,7 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/home/TWEL/go/bin"
-export PATH="$HOME/.tmuxifier/bin:$PATH"
+export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
 
 # Waydroid helpers
 # wd-start() {
