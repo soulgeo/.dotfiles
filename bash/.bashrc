@@ -7,6 +7,9 @@
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias tmnew='tmuxifier new-session'
+alias tmedit='tmuxifier edit-session'
+alias tmload='tmuxifier load-session'
 
 export EDITOR="nvim"
 export ELECTRON_OZONE_PLATFORM_HINT="auto"
