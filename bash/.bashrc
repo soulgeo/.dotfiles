@@ -7,6 +7,7 @@
 
 alias ls='ls -lh --color=auto'
 alias grep='grep --color=auto'
+alias vim='nvim'
 
 alias tmnew='tmuxifier new-session'
 alias tmedit='tmuxifier edit-session'
@@ -15,7 +16,7 @@ alias tmload='tmuxifier load-session'
 export EDITOR="nvim"
 export ELECTRON_OZONE_PLATFORM_HINT="auto"
 
-if ps -o comm= -p $(ps -o ppid= -p $$) | grep -qi alacritty; then
+if ps -o comm= -p "$(ps -o ppid= -p $$)" | grep -qi alacritty ; then
     if [ -z "${NO_FASTFETCH:-}" ]; then
         fastfetch
     fi
@@ -25,30 +26,13 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/home/TWEL/go/bin"
 export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
 
-# Waydroid helpers
-# wd-start() {
-# nohup waydroid session start > /tmp/waydroid-session.log 2>&1 &
-#   setsid env XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" WAYLAND_DISPLAY="$WLD" \
-#     waydroid show-full-ui >/dev/null 2>&1 < /dev/null &
-#   # disown to ensure the job isn't tied to the shell
-#   disown
-#   echo "Waydroid started (UI should appear)."
-# }
-
 wd-stop() {
   waydroid session stop
   echo "Waydroid stopped."
 }
 
-# wd-home()  { waydroid shell input keyevent 3; }   # go Home
-# wd-back()  { waydroid shell input keyevent 4; }   # Back
-# wd-launch() { waydroid app launch "$1"; }         # e.g. wd_launch com.android.settings
-
-# Usage: wd-start, wd-home, wd-back, wd-launch com.android.settings, wd-stop
-
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
-
 
 # Fast git-branch prompt: only runs git when inside a git repo, uses no-optional-locks
 parse_git_branch() {
@@ -101,4 +85,5 @@ export FZF_DEFAULT_OPTS="
 	--color=query:#d5d5d5
 	--color=gutter:#121212"
 
-# bind -r '\C-l'
+# tmux-sessionizer
+bind '"\C-f":"tmux-sessionizer\n"'
