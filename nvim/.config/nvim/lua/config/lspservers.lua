@@ -4,7 +4,7 @@ local servers = {
     "ts_ls",
     "eslint",
     "gopls",
-    "omnisharp",
+    -- "omnisharp",
 }
 
 return servers
