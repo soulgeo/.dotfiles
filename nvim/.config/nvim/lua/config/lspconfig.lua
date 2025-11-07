@@ -11,6 +11,8 @@ local default_servers = {
 -- lsps with default config
 vim.lsp.enable(default_servers)
 
+vim.lsp.config("roslyn", {})
+
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
