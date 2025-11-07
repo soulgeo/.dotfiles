@@ -11,6 +11,11 @@ local options = {
         "vim",
         "vimdoc",
         "yaml",
+        "css",
+        "html",
+        "hyprlang",
+        "c_sharp",
+        "razor",
     },
 
     highlight = {
