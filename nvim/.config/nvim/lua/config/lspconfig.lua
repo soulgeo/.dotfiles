@@ -6,6 +6,7 @@ local default_servers = {
     "pyright",
     "ts_ls",
     "eslint",
+    "ruby_lsp",
 }
 
 -- lsps with default config

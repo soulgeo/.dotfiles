@@ -16,6 +16,7 @@ local options = {
         "hyprlang",
         "c_sharp",
         "razor",
+        "ruby",
     },
 
     highlight = {

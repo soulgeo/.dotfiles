@@ -4,6 +4,7 @@ local servers = {
     "ts_ls",
     "eslint",
     "gopls",
+    "ruby_lsp",
     -- "omnisharp",
 }
 
