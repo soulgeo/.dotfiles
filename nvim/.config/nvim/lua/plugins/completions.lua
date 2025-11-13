@@ -67,7 +67,8 @@ return {
 
             -- helper: words before (for tab behavior)
             local has_words_before = function()
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                local cur = vim.api.nvim_win_get_cursor(0)
+                local line, col = cur[1], cur[2]
                 return col ~= 0
                     and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
@@ -121,19 +122,6 @@ return {
                     { name = "buffer" },
                 }),
             })
-
-            -- -- if you want to setup omnisharp here (so it gets the capabilities), do it now:
-            -- local ok, lspconfig = pcall(require, "lspconfig")
-            -- if ok then
-            --     local caps = vim.g.__cmp_lsp_capabilities
-            --     if caps then
-            --         -- example: omnisharp (change cmd/path or server name to your server if different)
-            --         lspconfig.omnisharp.setup({
-            --             capabilities = caps,
-            --             -- other omnisharp settings you may have...
-            --         })
-            --     end
-            -- end
         end,
     },
 }

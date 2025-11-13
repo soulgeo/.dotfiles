@@ -5,10 +5,16 @@ local options = {
         -- css = { "prettier" },
         -- html = { "prettier" },
         javascript = { "prettierd" },
-        go = { "gofumpt", "golines" }, --removed goimports-reviser
+        go = { "gofumpt", "golines" },
+        -- ruby = { "standardrb" },
     },
 
     formatters = {
+        -- -- Ruby
+        -- standardrb = {
+        --     prepend_args = { "--fix" }, -- auto-correct formatting
+        --     async = true,
+        -- },
         -- Python
         black = {
             prepend_args = {

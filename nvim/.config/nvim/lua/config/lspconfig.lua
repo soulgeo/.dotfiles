@@ -6,7 +6,7 @@ local default_servers = {
     "pyright",
     "ts_ls",
     "eslint",
-    "ruby_lsp",
+    -- "ruby_lsp",
 }
 
 -- lsps with default config
@@ -58,3 +58,51 @@ vim.lsp.config("gopls", {
     },
 })
 vim.lsp.enable("gopls")
+
+vim.lsp.config("ruby_lsp", {
+    filetypes = { "ruby" },
+
+    -- how to start the server. Use a shim or bundle exec to ensure the right Ruby env:
+    -- e.g. { "ruby-lsp" }  OR { "bundle", "exec", "ruby-lsp" } OR absolute shim path
+    cmd = { "ruby-lsp" },
+
+    -- root detection (adjust to your project if needed)
+    root_markers = { "Gemfile", ".git" },
+
+    -- server init options: enable formatter/linters/addon settings here
+    init_options = {
+        -- make features explicit (avoid relying on unknown defaults)
+        enabledFeatures = {
+            completion = true,
+            hover = true,
+            definition = true,
+            diagnostics = true,
+            documentSymbols = true,
+            -- add others if you want
+        },
+
+        -- force indexing to include the files in this folder (helps tiny single-file repros)
+        indexing = {
+            includedPatterns = { "**/*.rb", "**/airplane.rb" }, -- include the script(s)
+            -- excludedPatterns = { "vendor/**" }, -- keep empty unless you need excludes
+        },
+        formatter = "standard", -- example: use 'standard' formatter
+        linters = { "standard" }, -- example: enable `standard` linter
+        experimentalFeaturesEnabled = true,
+        addonSettings = {
+            ["Ruby LSP Rails"] = {
+                enablePendingMigrationsPrompt = false,
+            },
+        },
+    },
+
+    -- (optional) extra settings you might want to merge/override
+})
+vim.lsp.enable("ruby_lsp")
+
+-- vim.lsp.config("solargraph", {
+--     filetypes = { "ruby" },
+--     cmd = { "solargraph", "stdio" },
+--     root_markers = { "Gemfile", ".git" },
+-- })
+-- vim.lsp.enable("solargraph")
