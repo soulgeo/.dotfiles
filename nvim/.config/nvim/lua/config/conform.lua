@@ -6,15 +6,12 @@ local options = {
         -- html = { "prettier" },
         javascript = { "prettierd" },
         go = { "gofumpt", "golines" },
-        -- ruby = { "standardrb" },
+        ruby = { "rufo" },
     },
 
     formatters = {
-        -- -- Ruby
-        -- standardrb = {
-        --     prepend_args = { "--fix" }, -- auto-correct formatting
-        --     async = true,
-        -- },
+        -- Ruby
+        rufo = {},
         -- Python
         black = {
             prepend_args = {
