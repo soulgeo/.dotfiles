@@ -12,6 +12,12 @@ local default_servers = {
 -- lsps with default config
 vim.lsp.enable(default_servers)
 
+vim.lsp.config("html", {
+    cmd = { "vscode-html-language-server", "--stdio" }, -- Mason installs this executable
+    filetypes = { "html", "htmldjango" },
+})
+vim.lsp.enable("html")
+
 vim.lsp.config("roslyn", {})
 
 vim.lsp.config("lua_ls", {

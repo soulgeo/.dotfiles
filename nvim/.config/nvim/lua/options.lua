@@ -27,3 +27,16 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
 })
+
+-- set Django template filetype for any .html file inside a "templates" folder
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "*.html" }, -- run for HTML files
+    callback = function(opts)
+        local path = vim.api.nvim_buf_get_name(opts.buf) or ""
+        -- adjust the path check to match your OS path separator if needed
+        if path:match("/templates/") or path:match("\\templates\\") then
+            -- set buffer-local filetype to htmldjango (override whatever was set)
+            vim.bo[opts.buf].filetype = "htmldjango"
+        end
+    end,
+})

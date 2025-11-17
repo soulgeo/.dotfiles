@@ -13,6 +13,8 @@ alias tmnew='tmuxifier new-session'
 alias tmedit='tmuxifier edit-session'
 alias tmload='tmuxifier load-session'
 
+alias dj='python manage.py'
+
 export EDITOR="nvim"
 export ELECTRON_OZONE_PLATFORM_HINT="auto"
 
