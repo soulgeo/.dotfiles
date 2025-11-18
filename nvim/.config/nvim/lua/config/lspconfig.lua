@@ -72,7 +72,7 @@ vim.lsp.config("ruby_lsp", {
 
     init_options = {
         enabledFeatures = {
-            completion = true,
+            completion = false,
             hover = true,
             definition = true,
             diagnostics = true,
@@ -87,28 +87,28 @@ vim.lsp.config("ruby_lsp", {
 })
 vim.lsp.enable("ruby_lsp")
 
--- vim.lsp.config("solargraph", {
---     filetypes = { "ruby" },
---     cmd = { "bundle", "exec", "solargraph", "stdio" },
---     root_markers = { "Gemfile", ".git", "." },
---     init_options = {
---         -- sending formatting via init options avoids some older formatting issues
---         formatting = true,
---     },
---     settings = {
---         solargraph = {
---             diagnostics = true,
---             formatting = true,
---             completion = true,
---             useBundler = false, -- set true if you want server to use Bundler (see notes)
---             -- bundlerPath = "/absolute/path/to/bundle", -- optional if using useBundler
---         },
---     },
---     flags = {
---         debounce_text_changes = 150,
---     },
--- })
--- vim.lsp.enable("solargraph")
+vim.lsp.config("solargraph", {
+    filetypes = { "ruby" },
+    cmd = { "bundle", "exec", "solargraph", "stdio" },
+    root_markers = { "Gemfile", ".git", "." },
+    init_options = {
+        -- sending formatting via init options avoids some older formatting issues
+        formatting = false,
+    },
+    settings = {
+        solargraph = {
+            diagnostics = false,
+            formatting = false,
+            completion = true,
+            useBundler = false, -- set true if you want server to use Bundler (see notes)
+            -- bundlerPath = "/absolute/path/to/bundle", -- optional if using useBundler
+        },
+    },
+    flags = {
+        debounce_text_changes = 150,
+    },
+})
+vim.lsp.enable("solargraph")
 --
 -- vim.lsp.config("rubocop", {
 --     cmd = { "rubocop", "--lsp" },
