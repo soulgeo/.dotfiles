@@ -18,3 +18,5 @@
 [ -f /home/TWEL/.dart-cli-completion/bash-config.bash ] && . /home/TWEL/.dart-cli-completion/bash-config.bash || true
 ## [/Completion]
 
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/TWEL/.dotnet/tools"
