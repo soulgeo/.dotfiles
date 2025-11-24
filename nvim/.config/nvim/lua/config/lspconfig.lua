@@ -72,7 +72,7 @@ vim.lsp.config("ruby_lsp", {
 
     init_options = {
         enabledFeatures = {
-            completion = false,
+            completion = true,
             hover = true,
             definition = true,
             diagnostics = true,
