@@ -89,4 +89,10 @@ export FZF_DEFAULT_OPTS="
 
 # tmux-sessionizer
 bind '"\C-f":"tmux-sessionizer\n"'
+
 eval "$(mise activate bash)"
+
+# Auto activate virtual environment
+if [ -d ".venv" ]; then
+    source .venv/bin/activate
+fi
