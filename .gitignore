@@ -15,3 +15,6 @@
 # ignore typical local/bak files
 .tmuxifier/*.local
 .tmuxifier/*.bak
+
+# Ignore nvim lazy-lock.json
+nvim/.config/nvim/lazy-lock.json
