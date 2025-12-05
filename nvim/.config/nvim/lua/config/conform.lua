@@ -18,6 +18,7 @@ local options = {
                 "--fast",
                 "--line-length",
                 "80",
+                "--skip-string-normalization",
             },
         },
         isort = {
