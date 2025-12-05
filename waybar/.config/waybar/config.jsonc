@@ -8,12 +8,12 @@
   "cpu"
   ],
 
-  "modules-center": ["clock"],
+  "modules-center": ["custom/clock"],
 
   "modules-right": [
     "bluetooth",
     "network",
-    "pulseaudio", 
+    "pulseaudio",
     "backlight",
     "battery",
     "custom/power",
@@ -26,7 +26,7 @@
   "bluetooth": {
     "format": "󰂲",
     "format-on": "{icon}",
-    "format-off": "{icon}", 
+    "format-off": "{icon}",
     "format-connected":"{icon}",
     "format-icons":{
         "on":"󰂯",
@@ -47,11 +47,13 @@
     "max-length": 50
   },
 
-  "clock": {
-    "timezone": "Europe/Athens",
-    "tooltip": false,
-    "format": "{:%H:%M:%S  -  %A, %d}",
-    "interval": 1
+  "custom/clock": {
+    "exec": "~/.config/waybar/scripts/toggle-clock.sh",
+    "interval": 1,
+    "return-type": "string",
+    "tooltip": "false",
+    "tooltip-format": "",
+    "on-click": "~/.config/waybar/scripts/toggle-clock-click.sh"
   },
 
   "network": {
@@ -79,18 +81,18 @@
 
   "custom/uptime": {
     "format": "{}",
-    "format-icon": [""], 
+    "format-icon": [""],
     "tooltip": false,
     "interval": 1600,
     "exec": "$HOME/.config/waybar/scripts/uptime.sh"
   },
-  
+
   "backlight": {
         "format": "{icon} {percent}%",
         "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
         "tooltip": false
   },
-  
+
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "",
@@ -116,7 +118,7 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
   },
-  
+
   "custom/power": {
         "format": "⏻",
         "tooltip": false,
@@ -125,7 +127,6 @@
         "on-click-right": "systemctl poweroff",
         "on-click-middle": "systemctl reboot"
   },
-  
 
   "custom/lock": {
   "tooltip": false,

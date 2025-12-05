@@ -98,7 +98,7 @@ window#waybar {
 }
 
 /* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
-#clock {
+#custom-clock {
     /* background-color: #0d0d0d; */
     background-color: transparent;
     padding: 0.1rem 1rem;
@@ -112,10 +112,10 @@ window#waybar {
 }
 
 /* Simple Hover effect for clock module - BRIGHTER COLOR */
-#clock:hover {
-    background-color: rgba(209, 209, 209, 0.1);
-    /* Brighter highlight */
-}
+/* #custom-clock:hover { */
+/*     background-color: rgba(209, 209, 209, 0.1); */
+/* Brighter highlight */
+/* } */
 
 #custom-pomodoro {
     /* background-color: #0d0d0d; */
@@ -220,7 +220,7 @@ window#waybar {
     color: @fg;
 }
 
-#clock {
+#custom-clock {
     color: @fg;
     font-weight: 500;
 }
