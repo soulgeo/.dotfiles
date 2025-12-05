@@ -14,6 +14,7 @@ alias tmedit='tmuxifier edit-session'
 alias tmload='tmuxifier load-session'
 
 alias dj='python manage.py'
+alias dcup='docker-compose up'
 
 export EDITOR="nvim"
 export ELECTRON_OZONE_PLATFORM_HINT="auto"
