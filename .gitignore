@@ -21,3 +21,4 @@ nvim/.config/nvim/lazy-lock.json
 
 alacritty/.config/alacritty/local.toml
 hyprland/.config/hypr/local.conf
+hyprland/.config/hypr/hyprpaper.conf
