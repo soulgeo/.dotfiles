@@ -25,35 +25,6 @@ return {
         custom.replace.c.bg = "none"
         custom.inactive.c.bg = "none"
 
-        -- -- fallback progress table + handler setup (only if get_progress not available)
-        -- if vim.lsp.get_progress == nil then
-        --     -- table keyed by client_id -> active progress count
-        --     _G._lualine_lsp_progress = _G._lualine_lsp_progress or {}
-        --     if not _G._lualine_lsp_progress_handler_set then
-        --         local orig_handler = vim.lsp.handlers["$/progress"]
-        --         vim.lsp.handlers["$/progress"] = function(err, result, ctx, config)
-        --             if orig_handler then
-        --                 pcall(orig_handler, err, result, ctx, config)
-        --             end
-        --             if err or not result or not ctx then
-        --                 return
-        --             end
-        --             local client_id = ctx.client_id
-        --             if not client_id then
-        --                 return
-        --             end
-        --             local kind = result.value and result.value.kind
-        --             if kind == "begin" then
-        --                 _G._lualine_lsp_progress[client_id] = (_G._lualine_lsp_progress[client_id] or 0) + 1
-        --             elseif kind == "end" then
-        --                 _G._lualine_lsp_progress[client_id] =
-        --                     math.max(0, (_G._lualine_lsp_progress[client_id] or 1) - 1)
-        --             end
-        --         end
-        --         _G._lualine_lsp_progress_handler_set = true
-        --     end
-        -- end
-
         require("lualine").setup({
             options = {
                 theme = custom,
@@ -88,9 +59,9 @@ return {
         -- Clear StatusLine/StatusLineNC backgrounds (use hi! to cover both GUI/cterm)
         local function clear_statusline_bg()
             vim.cmd([[
-        silent! hi! StatusLine guibg=NONE ctermbg=NONE
-        silent! hi! StatusLineNC guibg=NONE ctermbg=NONE
-      ]])
+                silent! hi! StatusLine guibg=NONE ctermbg=NONE
+                silent! hi! StatusLineNC guibg=NONE ctermbg=NONE
+            ]])
         end
 
         -- Apply now and whenever colorscheme changes (prevents overrides)
