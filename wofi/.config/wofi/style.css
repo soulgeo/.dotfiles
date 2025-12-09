@@ -1,0 +1,34 @@
+window {
+    font-size: 14px;
+}
+
+#outer-box {
+    padding: 10px;
+}
+
+#input {
+    border-width: 0;
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
+#entry {
+    padding: 5px;
+}
+
+#entry:selected,
+#entry:selected label {
+    background-color: #222222;
+    color: #FF5353
+}
+
+#entry:selected {
+    border-width: 2px;
+    border-color: #FF5353;
+    border-radius: 0;
+}
+
+#entry image {
+    margin-right: 8px;
+    background-color: transparent;
+}
