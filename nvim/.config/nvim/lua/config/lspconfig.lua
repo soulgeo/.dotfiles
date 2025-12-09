@@ -6,7 +6,6 @@ local default_servers = {
     "pyright",
     "ts_ls",
     "eslint",
-    -- "ruby_lsp",
 }
 
 -- lsps with default config
@@ -109,10 +108,26 @@ vim.lsp.config("solargraph", {
     },
 })
 vim.lsp.enable("solargraph")
---
--- vim.lsp.config("rubocop", {
---     cmd = { "rubocop", "--lsp" },
---     filetypes = { "ruby" },
---     root_markers = { "Gemfile", ".git", "." },
--- })
--- vim.lsp.enable("rubocop")
+
+vim.lsp.config("emmet_ls", {
+    filetypes = {
+        "css",
+        "eruby",
+        "html",
+        "javascript",
+        "javascriptreact", -- Important for React
+        "less",
+        "sass",
+        "scss",
+        "pug",
+        "typescriptreact", -- Important for React/TS
+    },
+    -- optional: cutomize emmet behavior
+    init_options = {
+        includeLanguages = {
+            javascriptreact = "html",
+            typescriptreact = "html",
+        },
+    },
+})
+vim.lsp.enable("emmet_ls")
