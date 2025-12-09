@@ -122,7 +122,7 @@
   "custom/power": {
         "format": "⏻",
         "tooltip": false,
-        "on-click": "/home/TWEL/.config/waybar/scripts/wofi-power",
+        "on-click": "$HOME/.config/waybar/scripts/wofi-power",
         "interval": 0,
         "on-click-right": "systemctl poweroff",
         "on-click-middle": "systemctl reboot"
