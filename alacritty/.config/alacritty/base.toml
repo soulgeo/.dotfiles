@@ -13,4 +13,4 @@ padding = { x = 20, y = 20 }
 opacity = 0.9
 
 [colors.primary]
-background = "#000000"
+background = "#121212"
