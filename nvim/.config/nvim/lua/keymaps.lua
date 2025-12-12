@@ -39,3 +39,8 @@ vim.keymap.set("n", "<leader>tw", ":Twilight<CR>", { noremap = true, silent = tr
 
 -- Diagnostics
 vim.keymap.set("n", "<leader>dg", vim.diagnostic.open_float, {})
+
+-- Go Errors
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
+vim.keymap.set("n", "<leader>ef", 'oif err != nil {<CR>}<Esc>Olog.Fatalf("error: %s\\n", err.Error())<Esc>jj')
+vim.keymap.set("n", "<leader>el", 'oif err != nil {<CR>}<Esc>O.logger.Error("error", "error", err)<Esc>jj')
